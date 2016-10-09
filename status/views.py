@@ -130,16 +130,6 @@ def home(request):
             response['osd']['warn'] += 1
 
     
-    # RGW statuses
-    response['radosgw'] = {'stat': dict(), 'ok': 0, 'fail': 0}
-
-    for server in settings.S3_SERVERS:
-        stat = get_rgw_stat(server)
-        response['radosgw']['stat'][server] = stat
-        if stat:
-            response['radosgw']['ok'] += 1
-        else:
-            response['radosgw']['fail'] += 1
 
     if 'json' in request.GET:
         return JsonResponse(response)
