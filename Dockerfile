@@ -13,7 +13,7 @@ MAINTAINER donny@fortnebula.com
 
 RUN apt-get update
 RUN apt-get install -y python-pip python-dev libxml2-dev libxslt-dev zlib1g-dev
-RUN apt-get install -y ceph screen 
+RUN apt-get install -y ceph screen git
 
 ADD . /app
 RUN cd /app/ && pip install -r requirements.txt
