@@ -150,53 +150,6 @@ def home(request):
         return render_to_response('dashboard.html', response)
 
 
-def get_rgw_stat(server):
-    try:
-        rgwAdmin = RGWAdmin(settings.S3_ACCESS, settings.S3_SECRET,
-                            server, secure=False)
-        if rgwAdmin.get_users():
-            return 1
-        else:
-            return 0
-    except:
-        return 0
-
-def get_users_stat(s3_servers):
-    users_stat = {}
-    try:
-        rgwAdmin = RGWAdmin(settings.S3_ACCESS, settings.S3_SECRET,
-                            s3_servers.pop(0), secure=False) 
-        buckets_list = rgwAdmin.get_bucket()
-        for bucket in buckets_list:
-            try:
-                bucket_stat = rgwAdmin.get_bucket(bucket)
-                if bucket_stat["owner"] in users_stat:
-                    if "rgw.main" in bucket_stat["usage"]:
-                        users_stat[
-                            bucket_stat["owner"]
-                        ][bucket] = bucket_stat["usage"]["rgw.main"]
-                    else:
-                        users_stat[
-                            bucket_stat["owner"]
-                        ][bucket] = {}
-                else:
-                    if "rgw.main" in bucket_stat["usage"]:
-                        users_stat[bucket_stat["owner"]] = {
-                            bucket: bucket_stat["usage"]["rgw.main"]}
-                    else:
-                        users_stat[bucket_stat["owner"]] = {
-                            bucket: {}}
-            except:
-                pass
-        return users_stat
-    except IndexError:
-        return users_stat
-    except TypeError:
-        return get_users_stat(s3_servers)
-    except exceptions.ServerDown:
-        return get_users_stat(s3_servers)
-
-
 def osd_details(request, osd_num):
     ceph = wrapper.CephWrapper(endpoint=settings.CEPH_BASE_URL)
     osd_num = int(osd_num)
