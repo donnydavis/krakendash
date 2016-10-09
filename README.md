@@ -22,13 +22,13 @@ Everything should just work.
 Currently SELinux has to be disabled on the host machine for this container to work. I will get this fixed as soon as I can. 
 
 MON host setup is as follows
-'''
+```
 export target_dir=/mnt/krakenceph
 mkdir $target_dir
 rsync -axv /etc/ceph/ $target_dir
 chmod -R 755 $target_dir
 setenforce 0 #(Do not make this config permenant, I will be enabling SELinux when I get it sorted out)
-'''
+```
 Thanks for checking out my fork of https://github.com/krakendash/krakendash
 
 ## Milestone One
