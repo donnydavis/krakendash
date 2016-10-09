@@ -1,5 +1,5 @@
 # This is a slimmed down version of KrakenDash
- I removed the Ops portion, because I just want a slick UI to get status from and pull json data from 
+ I removed the Ops portion, because I just want a slick UI to get status from and pull json data from .
 
 # KrakenCeph 
 This can be used to monitor your Ceph Cluster, and hook into your NMS
@@ -12,10 +12,22 @@ This can be used to monitor your Ceph Cluster, and hook into your NMS
 
 ## Installation and Roadmap
 
+
 This is used to build a docker image which can be found here https://hub.docker.com/r/automatikdonn/krakenceph/
-Install docker on your mon hosts, create a directory to mount the ceph configurations, 
-copy over everything from /etc/ceph (I used /mnt/kraken) and then launch the container.
+
+Install docker on your mon hosts, create a directory to mount the ceph configurations (I used /mnt/kraken as $target_dir) 
+Copy over everything from /etc/ceph to $target_dir and then launch the container.
 Everything should just work. 
+
+Currently SELinux has to be disabled on the host machine for this container to work. I will get this fixed as soon as I can. 
+
+MON host setup is as follows
+'''
+export target_dir=/mnt/krakenceph
+mkdir $target_dir
+rsync -axv /etc/ceph $target_dir
+setenforce 0 #(Do not make this config permenant, I will be enabling SELinux when I get it sorted out)
+'''
 Thanks for checking out my fork of https://github.com/krakendash/krakendash
 
 ## Milestone One
