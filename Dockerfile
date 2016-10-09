@@ -6,14 +6,13 @@
 #
 # Find out more about docker here: www.docker.com
 
-FROM ubuntu:trusty
+FROM fedora:latest
 
 MAINTAINER donny@fortnebula.com
 
 
-RUN apt-get update
-RUN apt-get install -y python-pip python-dev libxml2-dev libxslt-dev zlib1g-dev
-RUN apt-get install -y ceph screen git
+RUN dnf -y update
+RUN dnf -y install python-pip git ceph python-lxml libxml2-devel libxslt-devel screen python-libxml2
 
 ADD . /app
 RUN cd /app/ && pip install -r requirements.txt
