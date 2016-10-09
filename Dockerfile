@@ -2,7 +2,7 @@
 #
 # run this handing it a directory with a ceph.conf file and keys that are needed:
 #
-# docker run -i -t -v /etc/ceph:/mnt/krakenceph -p 8000:8000 automatikdonn/krakenceph
+# docker run --name krakenceph -d -v $target_dir:/etc/ceph -p 8000:8000 automatikdonn/krakenceph /bin/sh -c /app/contrib/startall.sh
 #
 # Find out more about docker here: www.docker.com
 

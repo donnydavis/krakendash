@@ -1,5 +1,7 @@
 # This is a slimmed down version of KrakenDash
- I removed the Ops portion, because I just want a slick UI to get status from and pull json data from .
+ I removed the Ops portion, because I just want a slick UI to get status from and pull json data from.
+
+    I refactored this app to run specifically in a fedora docker container, and as long as you use the commands below, your dashboard should just work. 
 
 # KrakenCeph 
 This can be used to monitor your Ceph Cluster, and hook into your NMS
@@ -19,7 +21,8 @@ Install docker on your mon hosts, create a directory to mount the ceph configura
 Copy over everything from /etc/ceph to $target_dir and then launch the container.
 Everything should just work. 
 
-Currently SELinux has to be disabled on the host machine for this container to work. I will get this fixed as soon as I can. 
+## For some reason my variable doesn't work for SELinux, so just make use if you use a different directory you change it for the selinux commands. 
+
 
 MON host setup is as follows
 ```
@@ -27,33 +30,9 @@ export target_dir=/mnt/krakenceph
 mkdir $target_dir
 rsync -axv /etc/ceph/ $target_dir
 chmod -R 600 $target_dir
-setenforce 0 #(Do not make this config permenant, I will be enabling SELinux when I get it sorted out)
+semanage fcontext -a -t svirt_sandbox_file_t "/mnt/krakenceph(/.*)?"
+restorecon -Rv /mnt/krakenceph
+docker run --name krakenceph -d -v $target_dir:/etc/ceph -p 8000:8000 automatikdonn/krakenceph /bin/sh -c /app/contrib/startall.sh
 ```
 Thanks for checking out my fork of https://github.com/krakendash/krakendash
 
-## Milestone One
-- [x] Cluster status
-- [x] Cluster data usage
-- [x] MON status
-- [x] OSD status
-- [x] PG status
-- [x] Better UI
-- [x] Multi-MON support
-- [x] Migrate from requests to [python-cephclient](https://github.com/dmsimard/python-cephclient/)
-
-## Milestone Two
-- [] MON operations
-- [] OSD operations
-- [] Pool operations
-- [] List pools, size
-- [] Pool status
-- [] View CRUSH map
-
-### Milestone Three
-- [] Auth system
-- [] User session tracking
-
-### Milestone Four
-- [] Collectd integration
-- [] Graphite integration
-- [] Multi-cluster support
