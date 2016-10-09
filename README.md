@@ -1,7 +1,8 @@
 # This is a slimmed down version of KrakenDash
  I removed the Ops portion, because I just want a slick UI to get status from and pull json data from.
 
-    I refactored this app to run specifically in a fedora docker container, and as long as you use the commands below, your dashboard should just work. 
+    I refactored this app to run in a fedora docker container, and as long as you use the commands below, your dashboard should just work.
+    I changed the default ports for the app so they don't conflict with an Openstack deployment 
 
 # KrakenCeph 
 This can be used to monitor your Ceph Cluster, and hook into your NMS
@@ -35,7 +36,7 @@ rsync -axv /etc/ceph/ $target_dir
 chmod -R 600 $target_dir
 semanage fcontext -a -t svirt_sandbox_file_t "/mnt/krakenceph(/.*)?"
 restorecon -Rv /mnt/krakenceph
-docker run --name krakenceph -d -v $target_dir:/etc/ceph -p 8000:8000 automatikdonn/krakenceph /bin/sh -c /app/contrib/startall.sh
+docker run --name krakenceph -d -v $target_dir:/etc/ceph -p 9091:9091 automatikdonn/krakenceph /bin/sh -c /app/contrib/startall.sh
 ```
 Thanks for checking out my fork of https://github.com/krakendash/krakendash
 
