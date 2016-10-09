@@ -1,7 +1,8 @@
 # This is a slimmed down version of KrakenDash
  I removed the Ops portion, because I just want a slick UI to get status from and pull json data from.
 
-    I refactored this app to run in a fedora docker container, and as long as you use the commands below, your dashboard should just work.
+    I refactored this app to run in a fedora docker container and made it compatible with the latest django
+   
     I changed the default ports for the app so they don't conflict with an Openstack deployment 
 
 # KrakenCeph 
