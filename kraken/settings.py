@@ -22,8 +22,6 @@ SECRET_KEY = 'qcv3468b6n53bv53u5cnyp389bcn398nv5[1p46789bvnc8p35oi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
@@ -80,20 +78,36 @@ STATICFILES_DIRS = (
 )
 
 
+TEMPLATES = [
+{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [
+     os.path.join(BASE_DIR,'status/templates'),
+     os.path.join(BASE_DIR, 'ops/templates'),
+     ],
+    'OPTIONS': {
+        'context_processors': [
+            'django.template.context_processors.debug',
+            'django.template.context_processors.request',
+            'django.contrib.auth.context_processors.auth',
+            'django.contrib.messages.context_processors.messages',
+
+        ],
+    },
+},] 
 # Template dir
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'status/templates'),
-    os.path.join(BASE_DIR, 'ops/templates'),
-)
+#TEMPLATE_DIRS = (
+#    os.path.join(BASE_DIR, 'status/templates'),
+#    os.path.join(BASE_DIR, 'ops/templates'),
+#)
 
 
 # Ceph REST URLS
 CEPH_BASE_URL = 'http://127.0.0.1:5000/api/v0.1/'
 
 S3_SERVERS = [
-    'ceph1',
-    'ceph2',
-    'ceph3',
+    'ceph-2',
+    'ceph-3',
 ]
 S3_ACCESS = ""
 S3_SECRET = ""

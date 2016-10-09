@@ -174,4 +174,4 @@ def user_custom(request, user, func, argument):
         except Exception as e:
             return render(request, "ops.html", {"error": e})
 
-    return redirect("/krakendash/ops/")
+    return redirect("/")
