@@ -1,4 +1,4 @@
-# This is a slimmed down version of KrakenDash
+# This is a slimmed down version of KrakenDash - This is not a production monitoring system for Ceph
  I removed the Ops portion, because I just want a slick UI to get status from and pull json data from.
 
     I refactored this app to run in a fedora docker container and made it compatible with the latest django
