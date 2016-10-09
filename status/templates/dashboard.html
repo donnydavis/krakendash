@@ -138,7 +138,7 @@ CRIT
     </div>
 
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">PG States</h3>
@@ -154,7 +154,7 @@ CRIT
             </div>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title" id="osdNotice">OSD Status</h3>
@@ -180,26 +180,7 @@ CRIT
         </div>
 
 
-        <div class="col-sm-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title" id="rgwNotice">RGW Status</h3>
-                </div>
-                <div class="panel-body" align="left">
-                    <div class="btn-group btn-group-justified nofocus" role="group">
-                        {% for rgw, status in radosgw.stat.items|dictsort:"0.lower" %}
-                            <div class="btn-group btn-group-xs" role="group">
-                            {% if status == 1 %}
-                                <button type="button" class="btn btn-success">{{ rgw }}</button>
-                            {% else %}
-                                <button type="button" class="btn btn-danger">{{ rgw }}</button>
-                            {% endif %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
