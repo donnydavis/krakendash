@@ -72,7 +72,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_ROOT = ''
-STATIC_URL = '/krakendash/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'kraken/static'),
 )
@@ -99,10 +99,4 @@ TEMPLATES = [
 
 # Ceph REST URLS
 CEPH_BASE_URL = 'http://127.0.0.1:5000/api/v0.1/'
-
-S3_SERVERS = [
-    'localhost',
-]
-S3_ACCESS = ""
-S3_SECRET = ""
 

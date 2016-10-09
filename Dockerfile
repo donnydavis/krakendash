@@ -1,8 +1,8 @@
-# Dockerfile for krakendash
+# Dockerfile for krakenceph
 #
 # run this handing it a directory with a ceph.conf file and keys that are needed:
 #
-# docker run -i -t -v /etc/ceph:/etc/ceph -p 8000:8000 karcaw/krakendash
+# docker run -i -t -v /etc/ceph:/mnt/krakenceph -p 8000:8000 automatikdonn/krakenceph
 #
 # Find out more about docker here: www.docker.com
 
