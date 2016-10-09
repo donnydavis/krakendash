@@ -8,11 +8,11 @@ A free Ceph dashboard for stats and monitoring
 
 ## Overview
 
-![Status dashboard](/screenshots/status.png?raw=true "Status")
+![Status dashboard](https://raw.githubusercontent.com/donnydavis/krakendash/master/screenshots/status.png "Status") 
 
-![User panel](/screenshots/users.png?raw=true "Users")
+![User panel](https://raw.githubusercontent.com/donnydavis/krakendash/master/screenshots/users.png "Users")
 
-![User mod](/screenshots/user_mod.png?raw=true "User mod")
+![User mod](https://raw.githubusercontent.com/donnydavis/krakendash/master/screenshots/user_mod.png "User mod")
 
 ## Installation and Roadmap
 
