@@ -19,7 +19,7 @@ This is used to build a docker image which can be found here https://hub.docker.
 
 Install docker on your mon hosts, create a directory to mount the ceph configurations (I used /mnt/krakenceph as $target_dir) 
 Copy over everything from /etc/ceph to $target_dir and then launch the container.
-Everything should just work. 
+Everything should just work as long as port 5000 aren't already being used and port 8000 aren't already being used. 
 
 ## For some reason my variable doesn't work for SELinux, so just make use if you use a different directory you change it for the selinux commands. 
 
