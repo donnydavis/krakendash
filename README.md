@@ -19,9 +19,19 @@ This can be used to monitor your Ceph Cluster, and hook into your NMS
 This is used to build a docker image which can be found here https://hub.docker.com/r/automatikdonn/krakenceph/
 
 Install docker on your mon hosts, create a directory to mount the ceph configurations (I used /mnt/krakenceph as $target_dir) 
-Copy over everything from /etc/ceph to $target_dir and then launch the container.
-Everything should just work as long as port 5000 aren't already being used and port 8000 aren't already being used. 
 
+Copy and Paste directions are below
+
+You will need to adjust your own firewall settings to allow port 9091 through
+```
+firewall-cmd --add-port=9091/tcp
+firewall-cmd --add-port=9091/tcp --permanent
+```
+```
+iptables -A INPUT -p tcp -m tcp --dport 9091 -j ACCEPT
+iptables-save | tee /etc/sysconfig/iptables
+systemctl restart iptables
+```
 ## For some reason my variable doesn't work for SELinux, so just make use if you use a different directory you change it for the selinux commands. 
 
 

@@ -17,7 +17,7 @@ ADD . /app
 RUN cd /app/ && pip install -r requirements.txt
 
 VOLUME /etc/ceph
-EXPOSE 8000
+EXPOSE 9091
 
 
 CMD /app/contrib/startall.sh
