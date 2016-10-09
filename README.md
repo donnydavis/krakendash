@@ -32,7 +32,7 @@ iptables -A INPUT -p tcp -m tcp --dport 9091 -j ACCEPT
 iptables-save | tee /etc/sysconfig/iptables
 systemctl restart iptables
 ```
-## For some reason my variable doesn't work for SELinux, so just make use if you use a different directory you change it for the selinux commands. 
+## The variable doesn't work with the selinux commands. If you change the directory, don't forget to change them in the semanage and restorecon commands
 
 
 MON host setup is as follows
