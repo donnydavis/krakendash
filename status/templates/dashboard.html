@@ -13,30 +13,8 @@ CRIT
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-sm-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Health</h3>
-                </div>
-                <div class="panel-body">
-                    {% if cluster_health.output.overall_status == "HEALTH_OK" %}
-                      <h1 class="text-success"><i class="glyphicon glyphicon-ok"></i></h1>
-                    {% elif cluster_health.output.overall_status == "HEALTH_WARN" %}
-                      <h1 class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i></h1>
-                     {% for detail in cluster_health.output.detail %}
-                        <p class="text-warning">{{detail}}</p>
-                     {% endfor %}
-                    {% else %}
-                      <h1 class="text-danger"><i class="glyphicon glyphicon-fire"></i></h1>
-                      {% for detail in cluster_health.output.detail %}
-                        <p class="text-danger">{{detail}}</p>
-                      {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Status</h3>
@@ -81,8 +59,29 @@ CRIT
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-3">
+        <div class="col-sm-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Health</h3>
+                </div>
+                <div class="panel-body">
+                    {% if cluster_health.output.overall_status == "HEALTH_OK" %}
+                      <h1 class="text-success"><i class="glyphicon glyphicon-ok"></i></h1>
+                    {% elif cluster_health.output.overall_status == "HEALTH_WARN" %}
+                      <h1 class="text-warning"><i class="glyphicon glyphicon-warning-sign"></i></h1>
+                     {% for detail in cluster_health.output.detail %}
+                        <p class="text-warning">{{detail}}</p>
+                     {% endfor %}
+                    {% else %}
+                      <h1 class="text-danger"><i class="glyphicon glyphicon-fire"></i></h1>
+                      {% for detail in cluster_health.output.detail %}
+                        <p class="text-danger">{{detail}}</p>
+                      {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Usage</h3>
@@ -135,42 +134,41 @@ CRIT
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">PG States</h3>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">PG States</h3>
+                    </div>
+                    <ul class="list-group">
+                        {% for k, v in pg.stat.items %}
+                            <li class="list-group-item">
+                                {{ k }}
+                                <span class="label label-default">{{ v }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                <ul class="list-group">
-                    {% for k, v in pg.stat.items %}
-                        <li class="list-group-item">
-                            {{ k }}
-                            <span class="label label-default">{{ v }}</span>
-                        </li>
-                    {% endfor %}
-                </ul>
             </div>
-        </div>
-
-        <div class="col-sm-8">
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title" id="osdNotice">OSD Status</h3>
                 </div>
                 <div class="panel-body" align="left">
-                    <div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-toolbar pull-right" role="toolbar">
                         {% for storage in osd.state %}
-                            <div class="btn-group btn-group-xs" role="group">
+                            <div class="osd_button_wrap btn-group btn-group-sm" role="group">
                             {% if storage.state.0 == "exists" and storage.state.1 == "up" %}
                                 {% if storage.up and storage.in %}
-                                    <button id="osd_data" type="button" class="btn btn-success" role="button" send_url="/krakendash/osd/{{ storage.osd }}">{{ storage.osd }}</button>
+                                    <button id="osd_data" type="button" class="osd_button btn btn-success" role="button" send_url="/osd/{{ storage.osd }}">{{ storage.osd }}</button>
                                 {% else %}
-                                    <button id="osd_data" type="button" class="btn btn-warning" role="button" send_url="/krakendash/osd/{{ storage.osd }}">{{ storage.osd }}</button>
+                                    <button id="osd_data" type="button" class="btn btn-warning" role="button" send_url="/osd/{{ storage.osd }}">{{ storage.osd }}</button>
                                 {% endif %}
                             {% else %}
-                                <button id="osd_data" type="button" class="btn btn-danger" role="button" send_url="/krakendash/osd/{{ storage.osd }}">{{ storage.osd }}</button>
+                                <button id="osd_data" type="button" class="btn btn-danger" role="button" send_url="/osd/{{ storage.osd }}">{{ storage.osd }}</button>
                             {% endif %}
                             </div>
                         {% endfor %}
@@ -178,9 +176,16 @@ CRIT
                 </div>
             </div>
         </div>
+    </div>
 
 
-        
+
+
+
+
+
+
+
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">

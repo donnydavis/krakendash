@@ -11,7 +11,6 @@ FROM fedora:latest
 MAINTAINER donny@fortnebula.com
 
 
-RUN dnf -y update
 RUN dnf -y install python-pip git ceph python-lxml libxml2-devel libxslt-devel screen python-libxml2
 
 ADD . /app
@@ -19,5 +18,6 @@ RUN cd /app/ && pip install -r requirements.txt
 
 VOLUME /etc/ceph
 EXPOSE 8000
+
 
 CMD /app/contrib/startall.sh

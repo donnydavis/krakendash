@@ -100,10 +100,9 @@ TEMPLATES = [
 # Ceph REST URLS
 CEPH_BASE_URL = 'http://127.0.0.1:5000/api/v0.1/'
 
-#S3_SERVERS = [
-#    'ceph-2',
-#    'ceph-3',
-#]
-#S3_ACCESS = ""
-#S3_SECRET = ""
+S3_SERVERS = [
+    'localhost',
+]
+S3_ACCESS = ""
+S3_SECRET = ""
 

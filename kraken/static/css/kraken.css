@@ -32,3 +32,6 @@ body {padding-top:70px;text-align:center;}
 .btn-toggle {background: none; float: right;position: relative; top: -6pt; right: -10pt;}
 
 .nofocus {pointer-events: none; cursor: not-allowed;}
+.osd_button {min-width: 40px; max-width: 40px; padding: 1px; }
+.osd_button_wrap {padding: 2px; }
+
