@@ -1,3 +1,6 @@
+# This is currently a mirror of https://github.com/krakendash/krakendash
+This repo's purpose is to kick off an automated build of Krakendash on Dockerhub. 
+
 # kraken + S3
 
 A free Ceph dashboard for stats and monitoring
