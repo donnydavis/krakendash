@@ -15,7 +15,7 @@ This can be used to monitor your Ceph Cluster, and hook into your NMS
 
 This is used to build a docker image which can be found here https://hub.docker.com/r/automatikdonn/krakenceph/
 
-Install docker on your mon hosts, create a directory to mount the ceph configurations (I used /mnt/kraken as $target_dir) 
+Install docker on your mon hosts, create a directory to mount the ceph configurations (I used /mnt/krakenceph as $target_dir) 
 Copy over everything from /etc/ceph to $target_dir and then launch the container.
 Everything should just work. 
 
