@@ -26,7 +26,7 @@ Everything should just work.
 
 MON host setup is as follows
 ```
-yum -y install docker
+yum -y install docker rsync
 systemctl enable docker
 systemctl start docker
 export target_dir=/mnt/krakenceph
