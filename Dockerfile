@@ -8,7 +8,7 @@
 
 FROM ubuntu:trusty
 
-MAINTAINER karcaw@gmail.com
+MAINTAINER donny@fortnebula.com
 
 
 RUN apt-get update
