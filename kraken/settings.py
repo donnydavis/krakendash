@@ -98,5 +98,5 @@ TEMPLATES = [
 
 
 # Ceph REST URLS
-CEPH_BASE_URL = 'http://127.0.0.1:5000/api/v0.1/'
+CEPH_BASE_URL = 'http://127.0.0.1:15678/api/v0.1/'
 
