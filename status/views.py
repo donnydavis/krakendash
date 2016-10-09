@@ -129,9 +129,6 @@ def home(request):
         else:
             response['osd']['warn'] += 1
 
-    # Users and stats
-    s3_servers = list(settings.S3_SERVERS)
-    response['users'] = {'stat': get_users_stat(s3_servers)}
     
     # RGW statuses
     response['radosgw'] = {'stat': dict(), 'ok': 0, 'fail': 0}
